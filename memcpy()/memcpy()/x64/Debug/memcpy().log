@@ -1,0 +1,3 @@
+﻿  memcpy.cpp
+D:\workstation\Visual Studio 2022\memcpy()\memcpy()\memcpy.cpp(27,10): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  memcpy().vcxproj -> D:\workstation\Visual Studio 2022\memcpy()\x64\Debug\memcpy().exe
