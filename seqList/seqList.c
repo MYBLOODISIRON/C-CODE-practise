@@ -1,12 +1,12 @@
 #include "seqList.h"
 
-void creatlist(List*node,int size)//åˆ†é…é¡ºåºè¡¨å†…å­˜ç©ºé—´å¹¶åˆå§‹åŒ–è¡¨
+void creatlist(List*node,size_t size)// ·ÖÅäË³Ğò±íÄÚ´æ¿Õ¼ä²¢³õÊ¼»¯±í
 {
     assert(node);
     node->element =(Datetype*)malloc(sizeof(Datetype)*size);
     if(node==NULL)
     {
-        perror("creatlist failed");
+        perror("´´½¨Ë³Ğò±íÊ§°Ü");
         exit(-1);
     }
     node->size=size;
@@ -15,7 +15,7 @@ void creatlist(List*node,int size)//åˆ†é…é¡ºåºè¡¨å†…å­˜ç©ºé—´å¹¶åˆå§‹åŒ–è¡¨
 
 
 
-void DestroytheList(List*node)//é”€æ¯é¡ºåºè¡¨
+void DestroytheList(List*node)// Ïú»ÙË³Ğò±í
 {
     free(node->element);
     node->element=NULL;
@@ -25,15 +25,15 @@ void DestroytheList(List*node)//é”€æ¯é¡ºåºè¡¨
 
 
 
-void CheckSeqlistSize(List*node)//æ£€æŸ¥è¡¨æ˜¯å¦å·²æ»¡ï¼Œè‹¥æ»¡åˆ™æ‰©å®¹é¡ºåºè¡¨
+void CheckSeqlistSize(List*node)// ¼ì²é±íÊÇ·ñÒÑÂú£¬ÈôÂúÔòÀ©ÈİË³Ğò±í
 {
     if(node->size==node->length)
     {
-        int newsize=2*node->size;
+        size_t newsize=2*node->size;
         Datetype*newelement=(Datetype*)realloc(node->element,newsize*sizeof(Datetype));
     if(newelement==NULL)
     {
-        perror("failed");
+        perror("·ÖÅäÄÚ´æÊ§°Ü");
         exit(-1);
     }
     node->size=newsize;
@@ -44,36 +44,38 @@ void CheckSeqlistSize(List*node)//æ£€æŸ¥è¡¨æ˜¯å¦å·²æ»¡ï¼Œè‹¥æ»¡åˆ™æ‰©å®¹é¡ºåºè
 
 
 
-void ListPushBack(List*node,Datetype date)//å°¾éƒ¨æ’å…¥ä¸€ä¸ªå…ƒç´ 
+void ListPrint(List* node)// ´òÓ¡Ë³Ğò±íÊı¾İ
+{
+    if(IsListEmpty(node))
+    {
+        for (size_t i = 0; i < node->length; i++)
+        {
+            printf("%d ", node->element[i]);
+        }
+        printf("\n");
+    }
+    else printf("List is empty\n");
+}
+
+
+
+void ListPushBack(List*node,Datetype date)// Ë³Ğò±íÎ²²¿²åÈëÒ»¸öÔªËØ
 {
     CheckSeqlistSize(node);
     node->element[node->length]=date;
     node->length++;
-
 }
 
 
 
-void ListPrint(List* node)//æ‰“å°é¡ºåºè¡¨æ•°æ®
-{
-    int i = 0;
-
-    for (i = 0; i < node->length; i++)
-    {
-        printf("%d ", node->element[i]);
-    }
-    printf("\n");
-}
-
-
-
-void ListpushFront(List*node,Datetype date)//é¡ºåºè¡¨å¤´éƒ¨æ’å…¥ä¸€ä¸ªå…ƒç´ 
+void ListpushFront(List*node,Datetype date)// Ë³Ğò±íÍ·²¿²åÈëÒ»¸öÔªËØ
 {
     CheckSeqlistSize(node);
-    int tag=node->length-1;
-    while(tag--)
+    size_t tag=node->length;
+    while(tag)
     {
-        node->element[tag+1]=node->element[tag];
+        node->element[tag]=node->element[tag-1];
+        tag--;
     }
     node->element[0]=date;
     node->length++;
@@ -81,9 +83,94 @@ void ListpushFront(List*node,Datetype date)//é¡ºåºè¡¨å¤´éƒ¨æ’å…¥ä¸€ä¸ªå…ƒç´ 
 
 
 
-void Listinsert(List*node,size_t position,Datetype date)
+void Listinsert(List*node,size_t position,Datetype date)// ¸ø¶¨ÏÂ±ê²åÈëÒ»¸öÔªËØ
 {
     CheckSeqlistSize(node);
-    if(position>)
+    if(position<=node->length)
+    {
+        for(size_t tag=node->length;tag>position;tag--)
+        {
+            node->element[tag]=node->element[tag-1];
+        }
+        node->element[position]=date;
+        node->length++;
+    }
+    //else if(position==0) ListpushFront(node,date);
+    //else if(position==node->length) ListPushBack(node,date);
+    else
+    {
+        printf("ÇëÊäÈëºÏ·¨µÄÔªËØ²åÈëÎ»ÖÃ\n");
+    }
+}
 
+
+
+int IsListEmpty(List*node)// ÅĞ¶ÏË³Ğò±íÊÇ·ñÎª¿Õ
+{
+    if(node->length==0) return 0;
+    else return 1;
+}
+
+
+
+void ListpopFront(List*node)// Ë³Ğò±íÍ·²¿É¾³ıÒ»¸öÔªËØ
+{
+   if(IsListEmpty(node))// È·±£Ë³Ğò±í²»Îª¿Õ±í
+   {
+       for(size_t tag=1;tag<node->length;tag++)
+       {
+           node->element[tag-1]=node->element[tag];
+       }
+       node->length--;
+   }
+}
+
+
+
+void ListpopBack(List*node)// Ë³Ğò±íÎ²²¿É¾³ıÒ»¸öÔªËØ
+{
+
+    if(IsListEmpty(node))// È·±£Ë³Ğò±í²»Îª¿Õ±í
+    node->length--;
+}
+
+
+
+void ListErase(List*node,size_t position)// ¸ø¶¨ÏÂ±êÉ¾³ıÒ»¸öÔªËØ
+{
+    if(IsListEmpty(node))
+    {
+        if(position<node->length)
+        {
+            for(size_t tag=position;tag<node->length-1;tag++)
+            {
+                node->element[tag]=node->element[tag+1];
+            }
+            node->length--;
+        }
+        else
+        {
+            printf("ÇëÊäÈëºÏ·¨µÄÔªËØÉ¾³ıÎ»ÖÃ\n");
+        }
+    }
+
+}
+
+
+
+void ListSearch(List*node,Datetype date)// ²éÕÒÔªËØ²¢´òÓ¡ÏÂ±ê
+{
+    int flag=0;
+    printf("¸ÃÔªËØÏÂ±êÎª£º");
+    for(size_t tag=0;tag<node->length;tag++)
+    {
+        if(node->element[tag]==date)
+        {
+            flag=1;
+            printf("%u ",tag);
+        }
+    }
+    printf("\n");
+    if(flag==0)
+        printf("Î´²éÕÒµ½¸ÃÔªËØ\n");
 }
