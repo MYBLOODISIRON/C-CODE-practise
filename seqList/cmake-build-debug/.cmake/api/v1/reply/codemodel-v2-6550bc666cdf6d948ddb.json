@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/workstation/CLion/seqList/cmake-build-debug",
-		"source" : "D:/workstation/CLion/seqList"
+		"build" : "D:/workstation/CODE REPOSITORY/C-CODE-practise/seqList/cmake-build-debug",
+		"source" : "D:/workstation/CODE REPOSITORY/C-CODE-practise/seqList"
 	},
 	"version" : 
 	{

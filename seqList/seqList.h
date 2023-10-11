@@ -12,8 +12,8 @@ typedef struct SeqList
 }List;
 void creatlist(List*plist,size_t size);// 分配顺序表内存空间并初始化表
 void DestroytheList(List*plist);// 销毁顺序表
-void CheckSeqlistSize(List*plist);// 检查表是否已满，若满则扩容顺序表
 void ListPrint(List*plist);// 打印顺序表数据
+// void CheckSeqlistSize(List*plist);// 检查表是否已满，若满则扩容顺序表
 void ListPushBack(List*plist,Datetype date);// 尾部插入一个元素
 void ListpushFront(List*plist,Datetype date);// 顺序表头部插入一个元素
 void Listinsert(List*plist,size_t position,Datetype date);// 给定下标插入一个元素
