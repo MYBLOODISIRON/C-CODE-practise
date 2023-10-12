@@ -1,5 +1,5 @@
 
-#include "seqList.h"
+#include "SeqList.h"
 
 int main()
 {

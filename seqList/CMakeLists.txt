@@ -3,7 +3,7 @@ project(seqList C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(seqList seqList.c
+add_executable(seqList SeqList.c
         main.c
-        seqList.h
+        SeqList.h
 )

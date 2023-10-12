@@ -1,4 +1,4 @@
-#include "seqList.h"
+#include "SeqList.h"
 
 void CreatList(List*plist,size_t size)// 分配顺序表内存空间并初始化表
 {
