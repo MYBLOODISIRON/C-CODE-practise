@@ -9,6 +9,10 @@ int main()
     ListPushBack(phead,3);
     ListPushBack(phead,4);
     ListPushFront(phead,5);
+    ListPushFront(phead,6);
+    ListPushFront(phead,7);
+    ListPushFront(phead,8);
+    ListPushFront(phead,59);
     ListPrint(phead);
     ListPopBack(phead);
     ListPrint(phead);

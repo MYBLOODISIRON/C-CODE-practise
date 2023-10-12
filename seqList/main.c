@@ -4,7 +4,7 @@
 int main()
 {
     struct SeqList list;
-    creatlist(&list,50);
+    CreatList(&list,50);
     ListPushBack(&list,20);
     ListPushBack(&list,21);
     ListPushBack(&list,23);
@@ -17,6 +17,6 @@ int main()
     ListSearch(&list,22);
     ListModify(&list,3,29);
     ListPrint(&list);
-    DestroytheList(&list);
+    DestroyTheList(&list);
     return 0;
 }

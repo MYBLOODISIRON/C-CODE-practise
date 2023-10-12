@@ -1,6 +1,6 @@
 #include "seqList.h"
 
-void creatlist(List*plist,size_t size)// 分配顺序表内存空间并初始化表
+void CreatList(List*plist,size_t size)// 分配顺序表内存空间并初始化表
 {
     assert(plist);
     if(size==0)
@@ -19,7 +19,7 @@ void creatlist(List*plist,size_t size)// 分配顺序表内存空间并初始化表
 
 
 
-void DestroytheList(List*plist)// 销毁顺序表
+void DestroyTheList(List*plist)// 销毁顺序表
 {
     free(plist->element);
     plist->element=NULL;
