@@ -1,0 +1,6 @@
+# ninja log v5
+2	124	7192157592980554	CMakeFiles/stack.dir/main.c.obj	3a6361b6f7b5bdfc
+18	146	7191537794054456	CMakeFiles/stack.dir/stack.c.obj	d45c1ae75414da7e
+146	313	7192157594832323	stack.exe	6f1662e0680cc92f
+5	190	7192158552817661	build.ninja	4f14ec8e238010bb
+17	146	7192157593195201	CMakeFiles/stack.dir/Stack.c.obj	dfa75bdcdce4d483
