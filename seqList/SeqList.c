@@ -1,6 +1,6 @@
 #include "SeqList.h"
 
-void CreatList(List*plist,size_t size)// ·ÖÅäË³Ğò±íÄÚ´æ¿Õ¼ä²¢³õÊ¼»¯±í
+void CreatList(List*plist,size_t size)// åˆ†é…é¡ºåºè¡¨å†…å­˜ç©ºé—´å¹¶åˆå§‹åŒ–è¡¨
 {
     assert(plist);
     if(size==0)
@@ -8,9 +8,9 @@ void CreatList(List*plist,size_t size)// ·ÖÅäË³Ğò±íÄÚ´æ¿Õ¼ä²¢³õÊ¼»¯±í
         size=1;
     }
     plist->element =(Datetype*)malloc(sizeof(Datetype)*size);
-    if(plist==NULL)
+    if(plist->element==NULL)
     {
-        perror("´´½¨Ë³Ğò±íÊ§°Ü");
+        perror("åˆ›å»ºé¡ºåºè¡¨å¤±è´¥");
         exit(-1);
     }
     plist->size=size;
@@ -19,7 +19,7 @@ void CreatList(List*plist,size_t size)// ·ÖÅäË³Ğò±íÄÚ´æ¿Õ¼ä²¢³õÊ¼»¯±í
 
 
 
-void DestroyTheList(List*plist)// Ïú»ÙË³Ğò±í
+void DestroyTheList(List*plist)// é”€æ¯é¡ºåºè¡¨
 {
     free(plist->element);
     plist->element=NULL;
@@ -29,7 +29,7 @@ void DestroyTheList(List*plist)// Ïú»ÙË³Ğò±í
 
 
 
-void CheckSeqlistSize(List*plist)// ¼ì²é±íÊÇ·ñÒÑÂú£¬ÈôÂúÔòÀ©ÈİË³Ğò±í
+void CheckSeqlistSize(List*plist)// æ£€æŸ¥è¡¨æ˜¯å¦å·²æ»¡ï¼Œè‹¥æ»¡åˆ™æ‰©å®¹é¡ºåºè¡¨
 {
     if(plist->size==plist->length)
     {
@@ -37,7 +37,7 @@ void CheckSeqlistSize(List*plist)// ¼ì²é±íÊÇ·ñÒÑÂú£¬ÈôÂúÔòÀ©ÈİË³Ğò±í
         Datetype*newelement=(Datetype*)realloc(plist->element,newsize*sizeof(Datetype));
     if(newelement==NULL)
     {
-        perror("·ÖÅäÄÚ´æÊ§°Ü");
+        perror("åˆ†é…å†…å­˜å¤±è´¥");
         exit(-1);
     }
     plist->size=newsize;
@@ -48,7 +48,7 @@ void CheckSeqlistSize(List*plist)// ¼ì²é±íÊÇ·ñÒÑÂú£¬ÈôÂúÔòÀ©ÈİË³Ğò±í
 
 
 
-void ListPrint(List* plist)// ´òÓ¡Ë³Ğò±íÊı¾İ
+void ListPrint(List* plist)// æ‰“å°é¡ºåºè¡¨æ•°æ®
 {
     if(IsListEmpty(plist))
     {
@@ -63,7 +63,7 @@ void ListPrint(List* plist)// ´òÓ¡Ë³Ğò±íÊı¾İ
 
 
 
-void ListPushBack(List*plist,Datetype date)// Ë³Ğò±íÎ²²¿²åÈëÒ»¸öÔªËØ
+void ListPushBack(List*plist,Datetype date)// é¡ºåºè¡¨å°¾éƒ¨æ’å…¥ä¸€ä¸ªå…ƒç´ 
 {
     CheckSeqlistSize(plist);
     plist->element[plist->length]=date;
@@ -72,7 +72,7 @@ void ListPushBack(List*plist,Datetype date)// Ë³Ğò±íÎ²²¿²åÈëÒ»¸öÔªËØ
 
 
 
-void ListpushFront(List*plist,Datetype date)// Ë³Ğò±íÍ·²¿²åÈëÒ»¸öÔªËØ
+void ListpushFront(List*plist,Datetype date)// é¡ºåºè¡¨å¤´éƒ¨æ’å…¥ä¸€ä¸ªå…ƒç´ 
 {
     CheckSeqlistSize(plist);
     size_t tag=plist->length;
@@ -87,7 +87,7 @@ void ListpushFront(List*plist,Datetype date)// Ë³Ğò±íÍ·²¿²åÈëÒ»¸öÔªËØ
 
 
 
-void Listinsert(List*plist,size_t position,Datetype date)// ¸ø¶¨ÏÂ±ê²åÈëÒ»¸öÔªËØ
+void Listinsert(List*plist,size_t position,Datetype date)// ç»™å®šä¸‹æ ‡æ’å…¥ä¸€ä¸ªå…ƒç´ 
 {
     CheckSeqlistSize(plist);
     if(position<=plist->length)
@@ -103,13 +103,13 @@ void Listinsert(List*plist,size_t position,Datetype date)// ¸ø¶¨ÏÂ±ê²åÈëÒ»¸öÔªËØ
     //else if(position==node->length) ListPushBack(node,date);
     else
     {
-        printf("ÇëÊäÈëºÏ·¨µÄÔªËØ²åÈëÎ»ÖÃ\n");
+        printf("è¯·è¾“å…¥åˆæ³•çš„å…ƒç´ æ’å…¥ä½ç½®\n");
     }
 }
 
 
 
-int IsListEmpty(List*plist)// ÅĞ¶ÏË³Ğò±íÊÇ·ñÎª¿Õ
+int IsListEmpty(List*plist)// åˆ¤æ–­é¡ºåºè¡¨æ˜¯å¦ä¸ºç©º
 {
     if(plist->length==0) return 0;
     else return 1;
@@ -117,9 +117,9 @@ int IsListEmpty(List*plist)// ÅĞ¶ÏË³Ğò±íÊÇ·ñÎª¿Õ
 
 
 
-void ListpopFront(List*plist)// Ë³Ğò±íÍ·²¿É¾³ıÒ»¸öÔªËØ
+void ListpopFront(List*plist)// é¡ºåºè¡¨å¤´éƒ¨åˆ é™¤ä¸€ä¸ªå…ƒç´ 
 {
-   if(IsListEmpty(plist))// È·±£Ë³Ğò±í²»Îª¿Õ±í
+   if(IsListEmpty(plist))// ç¡®ä¿é¡ºåºè¡¨ä¸ä¸ºç©ºè¡¨
    {
        for(size_t tag=1;tag<plist->length;tag++)
        {
@@ -131,16 +131,16 @@ void ListpopFront(List*plist)// Ë³Ğò±íÍ·²¿É¾³ıÒ»¸öÔªËØ
 
 
 
-void ListpopBack(List*plist)// Ë³Ğò±íÎ²²¿É¾³ıÒ»¸öÔªËØ
+void ListpopBack(List*plist)// é¡ºåºè¡¨å°¾éƒ¨åˆ é™¤ä¸€ä¸ªå…ƒç´ 
 {
 
-    if(IsListEmpty(plist))// È·±£Ë³Ğò±í²»Îª¿Õ±í
+    if(IsListEmpty(plist))// ç¡®ä¿é¡ºåºè¡¨ä¸ä¸ºç©ºè¡¨
     plist->length--;
 }
 
 
 
-void ListErase(List*plist,size_t position)// ¸ø¶¨ÏÂ±êÉ¾³ıÒ»¸öÔªËØ
+void ListErase(List*plist,size_t position)// ç»™å®šä¸‹æ ‡åˆ é™¤ä¸€ä¸ªå…ƒç´ 
 {
     if(IsListEmpty(plist))
     {
@@ -154,7 +154,7 @@ void ListErase(List*plist,size_t position)// ¸ø¶¨ÏÂ±êÉ¾³ıÒ»¸öÔªËØ
         }
         else
         {
-            printf("ÇëÊäÈëºÏ·¨µÄÔªËØÉ¾³ıÎ»ÖÃ\n");
+            printf("è¯·è¾“å…¥åˆæ³•çš„å…ƒç´ åˆ é™¤ä½ç½®\n");
         }
     }
 
@@ -162,7 +162,7 @@ void ListErase(List*plist,size_t position)// ¸ø¶¨ÏÂ±êÉ¾³ıÒ»¸öÔªËØ
 
 
 
-void ListSearch(List*plist,Datetype date)// ´òÓ¡¸ø¶¨ÔªËØÔÚË³Ğò±íÖĞµÄÏÂ±ê
+void ListSearch(List*plist,Datetype date)// æ‰“å°ç»™å®šå…ƒç´ åœ¨é¡ºåºè¡¨ä¸­çš„ä¸‹æ ‡
 {
     int flag=0;
     for(size_t tag=0;tag<plist->length;tag++)
@@ -180,13 +180,13 @@ void ListSearch(List*plist,Datetype date)// ´òÓ¡¸ø¶¨ÔªËØÔÚË³Ğò±íÖĞµÄÏÂ±ê
     }
     else
     {
-        printf("¸ÃÔªËØ²»´æÔÚ\n");
+        printf("è¯¥å…ƒç´ ä¸å­˜åœ¨\n");
     }
 }
 
 
 
-void ListModify(List*plist,size_t position,Datetype date)// ĞŞ¸ÄË³Ğò±íÖĞµÄÔªËØ
+void ListModify(List*plist,size_t position,Datetype date)// ä¿®æ”¹é¡ºåºè¡¨ä¸­çš„å…ƒç´ 
 {
     if(position<plist->length)
     {
