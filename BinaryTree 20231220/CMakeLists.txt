@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.26)
+project(BinaryTree C)
+
+set(CMAKE_C_STANDARD 11)
+
+add_executable(BinaryTree main.c
+        BinaryTree.h
+        BinaryTree.c
+        Queue.h
+        Queue.c
+        library.h
+        Stack.h
+        Stack.c
+        test.c
+)
